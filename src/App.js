@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "loaders.css/loaders.min.css";
+import Header from "./components/Header";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Avengers from "./pages/Avengers";
+import StarWars from "./pages/StarWars";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="fluid-container">
+        <Header />
+
+        <div className="row">
+          <div className="col-md-12 p-5">
+            <Switch>
+              <Route path="/home" component={Home} />
+              <Route path="/avengers" component={Avengers} />
+              <Route path="/star-wars" component={StarWars} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 
